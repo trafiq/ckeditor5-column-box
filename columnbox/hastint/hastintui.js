@@ -31,7 +31,6 @@ export default class HasTintUI extends Plugin {
 
       view.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled')
 
-      // Execute command.
       this.listenTo(view, 'execute', () => {
         editor.execute(HASTINT)
         editor.editing.view.focus()

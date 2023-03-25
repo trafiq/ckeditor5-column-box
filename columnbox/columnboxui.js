@@ -8,31 +8,20 @@ export default class ColumnBoxUI extends Plugin {
   }
 
   init () {
-    console.log('ColumnBoxUI#init() got called')
     const editor = this.editor
     const t = editor.t
 
-    // The "simpleBox" button must be registered among the UI components of the editor
-    // to be displayed in the toolbar.
     editor.ui.componentFactory.add('columnBox', locale => {
-      // The state of the button will be bound to the widget command.
       const command = editor.commands.get('insertColumnBox')
-
-      // The button will be an instance of ButtonView.
       const buttonView = new ButtonView(locale)
 
       buttonView.set({
-        // The t() function helps localize the editor. All strings enclosed in t() can be
-        // translated and change when the language of the editor changes.
         label: t('Column Box'),
         withText: true,
         tooltip: true
       })
 
-      // Bind the state of the button to the command.
       buttonView.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled')
-
-      // Execute the command when the button is clicked (executed).
       this.listenTo(buttonView, 'execute', () => editor.execute('insertColumnBox'))
 
       return buttonView
@@ -40,13 +29,11 @@ export default class ColumnBoxUI extends Plugin {
   }
 
   afterInit () {
-    console.log('CalloutBoxUI#afterInit() got called')
     const editor = this.editor
     const t = editor.t
     const widgetToolbarRepository = editor.plugins.get(WidgetToolbarRepository)
     widgetToolbarRepository.register('columnBox', {
       ariaLabel: t('Callout Box toolbar'),
-      // Toolbar Buttons
       items: editor.config.get('columnBox.toolbar'),
       // If a related element is returned the toolbar is attached
       getRelatedElement: (selection) => {

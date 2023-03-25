@@ -2,8 +2,6 @@ import Plugin from '@ckeditor/ckeditor5-core/src/plugin'
 import { toWidget, toWidgetEditable } from '@ckeditor/ckeditor5-widget/src/utils'
 import Widget from '@ckeditor/ckeditor5-widget/src/widget'
 import InsertColumnBoxCommand from './insertcolumnboxcommand'
-// import ToggleBorderCommand from './togglebordercommand'
-// import ToggleClassCommand from './toggleclasscommand'
 
 export default class ColumnBoxEditing extends Plugin {
   static get requires () {
@@ -15,8 +13,6 @@ export default class ColumnBoxEditing extends Plugin {
     this._defineSchema()
     this._defineConverters()
     this.editor.commands.add('insertColumnBox', new InsertColumnBoxCommand(this.editor))
-    // this.editor.commands.add('toggleBorder', new ToggleBorderCommand(this.editor))
-    // this.editor.commands.add('toggleClass', new ToggleClassCommand(this.editor))
   }
 
   _defineSchema () {
@@ -51,16 +47,6 @@ export default class ColumnBoxEditing extends Plugin {
 
   _defineConverters () {
     const conversion = this.editor.conversion
-
-    // conversion.attributeToAttribute({
-    //   model: {
-    //     key: 'hasBorder'
-    //   },
-    //   view: {
-    //     key: 'class',
-    //     value: 'has-border'
-    //   }
-    // })
 
     conversion.for('upcast').elementToElement({
       model: 'columnBox',

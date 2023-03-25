@@ -3,8 +3,6 @@ import Command from '@ckeditor/ckeditor5-core/src/command'
 export default class InsertColumnBoxCommand extends Command {
   execute () {
     this.editor.model.change(writer => {
-      // Insert <columnBox>*</columnBox> at the current selection position
-      // in a way that will result in creating a valid model structure.
       this.editor.model.insertObject(createColumnBox(writer))
     })
   }

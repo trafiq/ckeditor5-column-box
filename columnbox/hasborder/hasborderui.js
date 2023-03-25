@@ -31,7 +31,6 @@ export default class HasBorderUI extends Plugin {
 
       view.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled')
 
-      // Execute command.
       this.listenTo(view, 'execute', () => {
         editor.execute(HASBORDER)
         editor.editing.view.focus()
