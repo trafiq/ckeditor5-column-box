@@ -19,8 +19,7 @@ export default class ColumnBoxEditing extends Plugin {
     const schema = this.editor.model.schema
 
     schema.register('columnBox', {
-      inheritAllFrom: '$blockObject',
-      allowAttributes: 'hasBorder'
+      inheritAllFrom: '$blockObject'
     })
 
     schema.register('columnBoxFirst', {
